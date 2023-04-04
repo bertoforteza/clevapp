@@ -11,6 +11,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -47,12 +48,14 @@
   "devDependencies": {
     "husky": "^8.0.0",
     "lint-staged": "^13.2.0",
+    "msw": "^1.0.1",
     "prettier": "^2.8.7"
   },
   "jest": {
     "collectCoverageFrom": [
-      "!./src/index.tsx",
-      "!./src/stories/*.tsx"
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!./src/index.tsx"
     ]
   }
 }

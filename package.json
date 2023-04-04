@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/work-sans": "^4.5.14",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.9",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.0",
     "msw": "^1.0.1",
@@ -55,7 +58,8 @@
     "collectCoverageFrom": [
       "src/**/*.ts",
       "src/**/*.tsx",
-      "!./src/index.tsx"
+      "!./src/index.tsx",
+      "!./src/styles/GlobalStyle.tsx"
     ]
   }
 }

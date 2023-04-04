@@ -1,6 +1,6 @@
 export interface PostStructure {
   title: string;
-  userId: string;
+  userId: number;
   body: string;
 }
 

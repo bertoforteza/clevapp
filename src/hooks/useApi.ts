@@ -16,7 +16,7 @@ const useApi = () => {
     dispatch(loadPostsActionCreator(posts));
   };
 
-  return getPosts;
+  return { getPosts };
 };
 
 export default useApi;

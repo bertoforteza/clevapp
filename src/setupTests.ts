@@ -4,9 +4,10 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
 import server from "./mocks/server";
+import handlers from "./mocks/handlers";
 
 beforeAll(() => server.listen());
 
-afterEach(() => server.resetHandlers());
+afterEach(() => server.resetHandlers(...handlers));
 
 afterAll(() => server.close());

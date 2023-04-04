@@ -22,6 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -47,5 +48,11 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!./src/index.tsx",
+      "!./src/stories/*.tsx"
+    ]
   }
 }

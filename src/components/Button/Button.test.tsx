@@ -10,7 +10,7 @@ describe("Given a Button component", () => {
 
       renderWithProviders(<Button action={() => {}} text="Delete" />);
 
-      const button = screen.queryByRole("button");
+      const button = screen.getByRole("button");
 
       expect(button).toBeInTheDocument();
       expect(button).toHaveTextContent(expectedText);

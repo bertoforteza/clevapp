@@ -3,7 +3,7 @@ import useApi from "./useApi";
 import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
 import { store } from "../store/store";
 import { loadPostsActionCreator } from "../store/features/postsSlice";
-import postListMock from "../mocks/postListMock";
+import postListMock from "../mocks/posts/postListMock";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 

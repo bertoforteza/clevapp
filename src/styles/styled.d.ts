@@ -5,9 +5,13 @@ declare module "styled-components" {
     colors: {
       primary: {
         base: string;
+        light: string;
+        dark: string;
       };
       secondary: {
         base: string;
+        light: string;
+        dark: string;
       };
       ink: {
         dark: string;

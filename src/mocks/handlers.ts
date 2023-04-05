@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import postListMock from "./postListMock";
+import postListMock from "./posts/postListMock";
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 

@@ -18,6 +18,10 @@ declare module "styled-components" {
         base: string;
         light: string;
       };
+      alert: {
+        success: string;
+        error: string;
+      };
     };
   }
 }

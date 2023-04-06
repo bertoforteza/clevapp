@@ -1,4 +1,4 @@
-import postListMock from "../../mocks/posts/postListMock";
+import postListMock from "../../../mocks/posts/postListMock";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,

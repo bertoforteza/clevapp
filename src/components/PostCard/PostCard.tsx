@@ -1,5 +1,5 @@
 import useApi from "../../hooks/useApi";
-import { PostStructure } from "../../store/features/types";
+import { PostStructure } from "../../store/features/posts/types";
 import Button from "../Button/Button";
 import PostCardStyled from "./PostCardStyled";
 

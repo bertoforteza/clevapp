@@ -31,22 +31,13 @@ const useApi = () => {
   }, [dispatch]);
 
   const deletePost = (id: number) => {
-    try {
-      dispatch(deletePostActionCreator(id));
-      dispatch(
-        openModalActionCreator({
-          isError: false,
-          message: "Post successfully deleted",
-        })
-      );
-    } catch {
-      dispatch(
-        openModalActionCreator({
-          isError: true,
-          message: "Could not delete post",
-        })
-      );
-    }
+    dispatch(deletePostActionCreator(id));
+    dispatch(
+      openModalActionCreator({
+        isError: false,
+        message: "Post successfully deleted",
+      })
+    );
   };
 
   return { getPosts, deletePost };

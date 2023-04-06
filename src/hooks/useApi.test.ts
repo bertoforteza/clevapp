@@ -7,6 +7,9 @@ import {
   loadPostsActionCreator,
 } from "../store/features/posts/postsSlice";
 import postListMock from "../mocks/posts/postListMock";
+import server from "../mocks/server";
+import { errorHandlers } from "../mocks/handlers";
+import { openModalActionCreator } from "../store/features/ui/uiSlice";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 
@@ -25,6 +28,30 @@ describe("Given a useApi custom hook", () => {
       await getPosts();
 
       expect(dispatchSpy).toHaveBeenCalledWith(loadPostsAction);
+    });
+  });
+
+  describe("When it's getPosts function is invoked and the request fails", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should invoke dispatch with openModalActionCreator with an error message 'Could not find any posts'", async () => {
+      const {
+        result: {
+          current: { getPosts },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const openModalAction = openModalActionCreator({
+        isError: true,
+        message: "Could not find any posts",
+      });
+
+      await getPosts();
+
+      expect(dispatchSpy).toHaveBeenCalledWith(openModalAction);
     });
   });
 

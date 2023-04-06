@@ -2,7 +2,10 @@ import { renderHook } from "@testing-library/react";
 import useApi from "./useApi";
 import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
 import { store } from "../store/store";
-import { loadPostsActionCreator } from "../store/features/postsSlice";
+import {
+  deletePostActionCreator,
+  loadPostsActionCreator,
+} from "../store/features/postsSlice";
 import postListMock from "../mocks/posts/postListMock";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
@@ -17,12 +20,28 @@ describe("Given a useApi custom hook", () => {
       } = renderHook(() => useApi(), {
         wrapper: ProviderWrapper,
       });
+      const loadPostsAction = loadPostsActionCreator(postListMock);
 
       await getPosts();
 
-      const loadPostsAction = loadPostsActionCreator(postListMock);
-
       expect(dispatchSpy).toHaveBeenCalledWith(loadPostsAction);
+    });
+  });
+
+  describe("When it's deletePost function is invoked with id 1", () => {
+    test("Then it should invoke dispatch with deletePostActionCreator with the same id", () => {
+      const {
+        result: {
+          current: { deletePost },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const deletePostAction = deletePostActionCreator(1);
+
+      deletePost(1);
+
+      expect(dispatchSpy).toHaveBeenCalledWith(deletePostAction);
     });
   });
 });

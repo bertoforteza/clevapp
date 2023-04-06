@@ -5,7 +5,7 @@ import { store } from "../store/store";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
-} from "../store/features/postsSlice";
+} from "../store/features/posts/postsSlice";
 import postListMock from "../mocks/posts/postListMock";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");

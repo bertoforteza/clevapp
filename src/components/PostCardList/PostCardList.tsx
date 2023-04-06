@@ -1,4 +1,4 @@
-import { PostStructure } from "../../store/features/types";
+import { PostStructure } from "../../store/features/posts/types";
 import PostCard from "../PostCard/PostCard";
 import PostCardListStyled from "./PostCardListStyled";
 

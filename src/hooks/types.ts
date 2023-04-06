@@ -1,3 +1,3 @@
-import { PostStructure } from "../store/features/types";
+import { PostStructure } from "../store/features/posts/types";
 
 export type ApiResponse = PostStructure[];

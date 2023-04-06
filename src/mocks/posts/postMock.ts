@@ -1,4 +1,4 @@
-import { PostStructure } from "../../store/features/types";
+import { PostStructure } from "../../store/features/posts/types";
 
 const postMock: PostStructure = {
   userId: 1,

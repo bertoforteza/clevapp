@@ -4,7 +4,7 @@ import { ApiResponse } from "./types";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
-} from "../store/features/postsSlice";
+} from "../store/features/posts/postsSlice";
 import { useCallback } from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL!;

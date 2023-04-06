@@ -17,6 +17,10 @@ const mainTheme: DefaultTheme = {
       base: "#9e9e9e",
       light: "#fff",
     },
+    alert: {
+      success: "#7ddf64",
+      error: "#de574e",
+    },
   },
 };
 

@@ -1,7 +1,10 @@
 import { useAppDispatch } from "../store/hooks";
 import axios from "axios";
 import { ApiResponse } from "./types";
-import { loadPostsActionCreator } from "../store/features/postsSlice";
+import {
+  deletePostActionCreator,
+  loadPostsActionCreator,
+} from "../store/features/postsSlice";
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 
@@ -16,7 +19,11 @@ const useApi = () => {
     dispatch(loadPostsActionCreator(posts));
   };
 
-  return { getPosts };
+  const deletePost = (id: number) => {
+    dispatch(deletePostActionCreator(id));
+  };
+
+  return { getPosts, deletePost };
 };
 
 export default useApi;

@@ -1,5 +1,6 @@
 import HomePage from "../../pages/HomePage/HomePage";
 import { useAppSelector } from "../../store/hooks";
+import Header from "../Header/Header";
 import Modal from "../Modal/Modal";
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <div className="container">
       {isOpen && <Modal isError={isError} message={message} />}
+      <Header />
       <HomePage />
     </div>
   );

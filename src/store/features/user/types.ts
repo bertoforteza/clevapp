@@ -5,4 +5,4 @@ export interface UserState {
   isLogged: boolean;
 }
 
-export type UserCredentials = Pick<UserState, "username" | "id" | "token">;
+export type UserLoginData = Pick<UserState, "username" | "id" | "token">;

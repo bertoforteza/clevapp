@@ -13,6 +13,11 @@
     - isError: boolean
     - isOpen: boolean
     - text: string
+- UserContext
+  - userName: string
+  - id: string
+  - token: string
+  - isLogged: boolean
 
 ## Receive interactions
 

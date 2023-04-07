@@ -24,6 +24,10 @@ ol, ul {
   list-style: none;
   padding: 0;
 }
+
+:focus-visible {
+    outline: none;
+  }
 `;
 
 export default GlobalStyle;

@@ -1,5 +1,8 @@
 import { openModalActionCreator } from "../../store/features/ui/uiSlice";
-import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { UserCredentials } from "../types";
 
@@ -23,7 +26,13 @@ const useUser = () => {
     }
   };
 
-  return { loginUser };
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+
+    dispatch(logoutUserActionCreator());
+  };
+
+  return { loginUser, logoutUser };
 };
 
 export default useUser;

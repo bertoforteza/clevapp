@@ -60,7 +60,8 @@
       "src/**/*.ts",
       "src/**/*.tsx",
       "!./src/index.tsx",
-      "!./src/styles/GlobalStyle.tsx"
+      "!./src/styles/GlobalStyle.tsx",
+      "!./src/router/router.tsx"
     ]
   }
 }

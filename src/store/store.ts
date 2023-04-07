@@ -7,10 +7,12 @@ import {
 } from "@reduxjs/toolkit";
 import { postsReducer } from "./features/posts/postsSlice";
 import { uiReducer } from "./features/ui/uiSlice";
+import { userReducer } from "./features/user/userSlice";
 
 const rootReducer = combineReducers({
   posts: postsReducer,
   ui: uiReducer,
+  user: userReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

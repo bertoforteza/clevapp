@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import useApi from "../../hooks/useApi";
 import { useAppSelector } from "../../store/hooks";
+import useApi from "../../hooks/useApi/useApi";
 import PostCardList from "../../components/PostCardList/PostCardList";
 import HomePageStyled from "./HomePageStyled";
 

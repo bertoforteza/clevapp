@@ -1,12 +1,12 @@
-import { useAppDispatch } from "../store/hooks";
 import axios from "axios";
-import { ApiResponse } from "./types";
+import { useCallback } from "react";
+import { useAppDispatch } from "../../store/hooks";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
-} from "../store/features/posts/postsSlice";
-import { useCallback } from "react";
-import { openModalActionCreator } from "../store/features/ui/uiSlice";
+} from "../../store/features/posts/postsSlice";
+import { ApiResponse } from "../types";
+import { openModalActionCreator } from "../../store/features/ui/uiSlice";
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 

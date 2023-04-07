@@ -1,15 +1,15 @@
 import { renderHook } from "@testing-library/react";
 import useApi from "./useApi";
-import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
-import { store } from "../store/store";
+import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
+import { store } from "../../store/store";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
-} from "../store/features/posts/postsSlice";
-import postListMock from "../mocks/posts/postListMock";
-import server from "../mocks/server";
-import { errorHandlers } from "../mocks/handlers";
-import { openModalActionCreator } from "../store/features/ui/uiSlice";
+} from "../../store/features/posts/postsSlice";
+import postListMock from "../../mocks/posts/postListMock";
+import server from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
+import { openModalActionCreator } from "../../store/features/ui/uiSlice";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 

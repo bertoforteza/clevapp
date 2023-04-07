@@ -6,7 +6,7 @@ import { act } from "react-dom/test-utils";
 
 const mockGetPosts = jest.fn();
 
-jest.mock("../../hooks/useApi", () => {
+jest.mock("../../hooks/useApi/useApi", () => {
   return () => ({
     getPosts: mockGetPosts,
   });

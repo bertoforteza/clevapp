@@ -5,7 +5,7 @@ import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import PostCard from "./PostCard";
 
 const mockDeletePost = jest.fn();
-jest.mock("../../hooks/useApi", () => {
+jest.mock("../../hooks/useApi/useApi", () => {
   return () => ({
     deletePost: mockDeletePost,
   });

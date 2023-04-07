@@ -3,7 +3,10 @@ import { UserCredentials } from "../types";
 import useUser from "./useUser";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import { store } from "../../store/store";
-import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/user/userSlice";
 import { openModalActionCreator } from "../../store/features/ui/uiSlice";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
@@ -55,6 +58,22 @@ describe("Given a useUser custom hook", () => {
       loginUser(loginData);
 
       expect(dispatchSpy).toHaveBeenCalledWith(openModalAction);
+    });
+  });
+
+  describe("When it's logoutUser function is invoked", () => {
+    test("Then it should invoke dispatch with logoutUser action", () => {
+      const {
+        result: {
+          current: { logoutUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      logoutUser();
+
+      expect(dispatchSpy).toHaveBeenCalledWith(logoutUserActionCreator());
     });
   });
 });

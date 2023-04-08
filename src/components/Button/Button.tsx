@@ -1,15 +1,22 @@
 import ButtonStyled from "./ButtonStyled";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
+  icon?: JSX.Element;
   action: () => void;
   isDisabled?: boolean;
 }
 
-const Button = ({ text, action, isDisabled }: ButtonProps): JSX.Element => {
+const Button = ({
+  text,
+  icon,
+  action,
+  isDisabled,
+}: ButtonProps): JSX.Element => {
   return (
     <ButtonStyled className="button" onClick={action} disabled={isDisabled}>
       {text}
+      {icon}
     </ButtonStyled>
   );
 };

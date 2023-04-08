@@ -36,6 +36,7 @@ const PostCardStyled = styled.li`
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    display: flex;
   }
 `;
 

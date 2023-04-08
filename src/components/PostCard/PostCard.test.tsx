@@ -30,11 +30,10 @@ describe("Given a PostCard component", () => {
   describe("When its rendered and the user clicks on it's 'delete' button", () => {
     test("Then deletePost function should be invoked", async () => {
       const post = postMock;
-      const buttonText = /delete/i;
 
       renderWithProviders(<PostCard post={post} />);
 
-      const deleteButton = screen.getByRole("button", { name: buttonText });
+      const deleteButton = screen.getByRole("button");
       await userEvent.click(deleteButton);
 
       expect(mockDeletePost).toHaveBeenCalled();

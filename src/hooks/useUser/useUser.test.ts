@@ -8,8 +8,16 @@ import {
   logoutUserActionCreator,
 } from "../../store/features/user/userSlice";
 import { openModalActionCreator } from "../../store/features/ui/uiSlice";
+import localStorageMock from "../../mocks/localStorage/localStorageMock";
+import mockUserData from "../../mocks/user/mockUserData";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
+
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
+});
+
+beforeEach(jest.clearAllMocks);
 
 describe("Given a useUser custom hook", () => {
   describe("When it's loginUser function is invoked with username 'admin' and password 'adminadmin'", () => {
@@ -74,6 +82,40 @@ describe("Given a useUser custom hook", () => {
       logoutUser();
 
       expect(dispatchSpy).toHaveBeenCalledWith(logoutUserActionCreator());
+    });
+  });
+
+  describe("When it's getUserToken function is invoked and there is no token in the local storage", () => {
+    test("Then dispatch should not be invoked", () => {
+      const {
+        result: {
+          current: { getUserToken },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      getUserToken();
+
+      expect(dispatchSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's getUserToken function is invoked and there ir a token 'adminToken' in the local storage", () => {
+    test("Then it should invoke dispatch with loginUser action", () => {
+      localStorageMock.setItem("token", "adminToken");
+      const {
+        result: {
+          current: { getUserToken },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+      const loginUserAction = loginUserActionCreator(mockUserData);
+
+      getUserToken();
+
+      expect(dispatchSpy).toHaveBeenCalledWith(loginUserAction);
     });
   });
 });

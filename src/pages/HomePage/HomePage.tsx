@@ -16,6 +16,7 @@ const HomePage = (): JSX.Element => {
 
   return isLogged ? (
     <HomePageStyled>
+      <h2 className="title">Clever posts</h2>
       <PostCardList posts={posts} />
     </HomePageStyled>
   ) : (

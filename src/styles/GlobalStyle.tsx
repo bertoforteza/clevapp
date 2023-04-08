@@ -16,7 +16,7 @@ body {
   background-color: ${(props) => props.theme.colors.ink.light}
 }
 
-body, h1, h2, ul, li, p, span {
+body, h1, h2, h3, ul, li, p, span {
   margin: 0;
 }
 

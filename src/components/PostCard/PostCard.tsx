@@ -14,7 +14,7 @@ const PostCard = ({
 
   return (
     <PostCardStyled className="post-card">
-      <h2 className="post-card__title">{title}</h2>
+      <h3 className="post-card__title">{title}</h3>
       <p className="post-card__content">{body}</p>
       <span className="post-card__author">Created by: {userId}</span>
       <Button text="Delete" action={() => deletePost(id)} />

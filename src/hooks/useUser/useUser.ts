@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { openModalActionCreator } from "../../store/features/ui/uiSlice";
 import {
   loginUserActionCreator,
@@ -32,7 +33,21 @@ const useUser = () => {
     dispatch(logoutUserActionCreator());
   };
 
-  return { loginUser, logoutUser };
+  const getUserToken = useCallback(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      dispatch(
+        loginUserActionCreator({
+          id: "1234",
+          token,
+          username: "admin",
+        })
+      );
+    }
+  }, [dispatch]);
+
+  return { loginUser, logoutUser, getUserToken };
 };
 
 export default useUser;

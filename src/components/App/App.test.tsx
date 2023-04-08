@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import App from "./App";
+import { initialUiState } from "../../store/features/ui/uiSlice";
 
 describe("Given an App component", () => {
   describe("When its rendered", () => {
@@ -32,6 +33,21 @@ describe("Given an App component", () => {
       const modal = screen.getByText(modalMessage);
 
       expect(modal).toBeInTheDocument();
+    });
+  });
+
+  describe("When its rendered and isLoading property is true", () => {
+    test("Then it should show a Loader component", () => {
+      renderWithProviders(<App />, {
+        ui: {
+          ...initialUiState,
+          isLoading: true,
+        },
+      });
+
+      const loader = screen.getByLabelText("The page is loading");
+
+      expect(loader).toBeInTheDocument();
     });
   });
 });

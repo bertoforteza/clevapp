@@ -27,7 +27,7 @@ const postsSlice = createSlice({
       ),
     }),
 
-    loasPostById: (
+    loadPostById: (
       currentPostsState,
       action: PayloadAction<PostStructure>
     ): PostsState => ({
@@ -42,5 +42,5 @@ export const postsReducer = postsSlice.reducer;
 export const {
   loadPosts: loadPostsActionCreator,
   deletePost: deletePostActionCreator,
-  loasPostById: loasPostByIdActionCreator,
+  loadPostById: loadPostByIdActionCreator,
 } = postsSlice.actions;

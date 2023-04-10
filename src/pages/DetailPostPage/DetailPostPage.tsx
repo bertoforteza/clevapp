@@ -3,7 +3,8 @@ import { PostStructure } from "../../store/features/posts/types";
 import { useAppSelector } from "../../store/hooks";
 import { useEffect } from "react";
 import DetailPostPageStyled from "./DetailPostPageStyled";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const DetailPostPage = (): JSX.Element => {
   const { posts } = useAppSelector(({ posts }) => posts);
@@ -12,6 +13,7 @@ const DetailPostPage = (): JSX.Element => {
   const postIdNumber = parseInt(postId!);
   const post: PostStructure = posts[0];
   const { body, title, userId } = post;
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPostById(postIdNumber);
@@ -24,11 +26,7 @@ const DetailPostPage = (): JSX.Element => {
       <span className="detail-page__author">
         This post was created by {userId}
       </span>
-      <img
-        src="../../assets/posting-picture.png"
-        alt=""
-        className="detail-page__picture"
-      />
+      <Button action={() => navigate("/")} text="home" />
     </DetailPostPageStyled>
   );
 };

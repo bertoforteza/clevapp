@@ -4,12 +4,18 @@ import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import { store } from "../../store/store";
 import {
   deletePostActionCreator,
+  loadPostByIdActionCreator,
   loadPostsActionCreator,
 } from "../../store/features/posts/postsSlice";
 import postListMock from "../../mocks/posts/postListMock";
 import server from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
-import { openModalActionCreator } from "../../store/features/ui/uiSlice";
+import {
+  hideLoadingActionCreator,
+  openModalActionCreator,
+  showLoadingActionCreator,
+} from "../../store/features/ui/uiSlice";
+import postMock from "../../mocks/posts/postMock";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 
@@ -69,6 +75,69 @@ describe("Given a useApi custom hook", () => {
       deletePost(1);
 
       expect(dispatchSpy).toHaveBeenCalledWith(deletePostAction);
+    });
+  });
+
+  describe("When it's getPostByIt function is invoked with id 1", () => {
+    test("Then it should invoke dispatch with showLoadingActionCreator, hideLoadingActionCreator and loadPostByIdActionCreator with the received post", async () => {
+      const {
+        result: {
+          current: { getPostById },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const post = postMock;
+
+      await getPostById(post.id);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        loadPostByIdActionCreator(post)
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        hideLoadingActionCreator()
+      );
+    });
+  });
+
+  describe("When it's getPostById function is invoked and the request fails", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should invoke dispatch with hideLoadingActionCreator and openModalActionCreator with an error", async () => {
+      const {
+        result: {
+          current: { getPostById },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const post = postMock;
+
+      await getPostById(post.id);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        hideLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        openModalActionCreator({
+          isError: true,
+          message: "There was a problem loading the post",
+        })
+      );
     });
   });
 });

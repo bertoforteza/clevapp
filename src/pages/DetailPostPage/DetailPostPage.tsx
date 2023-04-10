@@ -3,16 +3,19 @@ import { PostStructure } from "../../store/features/posts/types";
 import { useAppSelector } from "../../store/hooks";
 import { useEffect } from "react";
 import DetailPostPageStyled from "./DetailPostPageStyled";
+import { useParams } from "react-router-dom";
 
 const DetailPostPage = (): JSX.Element => {
-  const { getPostById } = useApi();
   const { posts } = useAppSelector(({ posts }) => posts);
+  const { getPostById } = useApi();
+  const { postId } = useParams();
+  const postIdNumber = parseInt(postId!);
   const post: PostStructure = posts[0];
-  const { body, id, title, userId } = post;
+  const { body, title, userId } = post;
 
   useEffect(() => {
-    getPostById(id);
-  }, [getPostById, id]);
+    getPostById(postIdNumber);
+  }, [getPostById, postIdNumber]);
 
   return (
     <DetailPostPageStyled className="detail-page">

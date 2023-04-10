@@ -52,26 +52,29 @@ const useApi = () => {
     );
   };
 
-  const getPostById = async (postId: number) => {
-    try {
-      dispatch(showLoadingActionCreator());
-      const response = await axios.get(`${apiUrl}/${postId}`);
+  const getPostById = useCallback(
+    async (postId: number) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const response = await axios.get(`${apiUrl}/${postId}`);
 
-      const post: PostStructure = response.data;
+        const post: PostStructure = response.data;
 
-      dispatch(loadPostByIdActionCreator(post));
-      dispatch(hideLoadingActionCreator());
-    } catch {
-      dispatch(hideLoadingActionCreator());
+        dispatch(loadPostByIdActionCreator(post));
+        dispatch(hideLoadingActionCreator());
+      } catch {
+        dispatch(hideLoadingActionCreator());
 
-      dispatch(
-        openModalActionCreator({
-          isError: true,
-          message: "There was a problem loading the post",
-        })
-      );
-    }
-  };
+        dispatch(
+          openModalActionCreator({
+            isError: true,
+            message: "There was a problem loading the post",
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
 
   return { getPosts, deletePost, getPostById };
 };

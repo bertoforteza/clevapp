@@ -9,6 +9,7 @@ const PostCardStyled = styled.li`
   border-radius: 15px;
   padding: 1rem;
   position: relative;
+  cursor: pointer;
 
   .post-card {
     &__title {

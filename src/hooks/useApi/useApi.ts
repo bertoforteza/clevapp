@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../store/hooks";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
+  loadPostByIdActionCreator,
 } from "../../store/features/posts/postsSlice";
 import { ApiResponse } from "../types";
 import {
@@ -11,6 +12,7 @@ import {
   openModalActionCreator,
   showLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
+import { PostStructure } from "../../store/features/posts/types";
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 
@@ -40,8 +42,8 @@ const useApi = () => {
     }
   }, [dispatch]);
 
-  const deletePost = (id: number) => {
-    dispatch(deletePostActionCreator(id));
+  const deletePost = (postId: number) => {
+    dispatch(deletePostActionCreator(postId));
     dispatch(
       openModalActionCreator({
         isError: false,
@@ -50,7 +52,31 @@ const useApi = () => {
     );
   };
 
-  return { getPosts, deletePost };
+  const getPostById = useCallback(
+    async (postId: number) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const response = await axios.get(`${apiUrl}/${postId}`);
+
+        const post: PostStructure = response.data;
+
+        dispatch(loadPostByIdActionCreator(post));
+        dispatch(hideLoadingActionCreator());
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        dispatch(
+          openModalActionCreator({
+            isError: true,
+            message: "There was a problem loading the post",
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
+
+  return { getPosts, deletePost, getPostById };
 };
 
 export default useApi;

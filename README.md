@@ -57,7 +57,12 @@ To run the tests, use the following commands:
 
 The application can be accessed in a web browser at `http://localhost:3000/`.
 
-The deployed version of the application can be found at [https://clevapp.netlify.app/](https://clevapp.netlify.app/).
+The deployed version of the application can be found at [ClevApp web site](https://clevapp.netlify.app/).
+
+### Credentials
+
+- Username: admin
+- Password: adminadmin
 
 ## Contributing
 

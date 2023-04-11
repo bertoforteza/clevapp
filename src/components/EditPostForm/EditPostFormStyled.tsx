@@ -5,7 +5,7 @@ const EditPostFormStyled = styled.form`
   flex-direction: column;
   gap: 1rem;
   background-color: ${(props) => props.theme.colors.secondary.base};
-  border-radius: 10px;
+  border-radius: ${(props) => props.theme.borderRadius.small};
   padding: 1rem;
   min-height: 60vh;
   max-width: 800px;
@@ -19,7 +19,7 @@ const EditPostFormStyled = styled.form`
 
     &__label {
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: ${(props) => props.theme.fontWeights.bold};
       font-size: 1.2rem;
       color: ${(props) => props.theme.colors.ink.light};
     }
@@ -33,11 +33,11 @@ const EditPostFormStyled = styled.form`
     &__field {
       background-color: ${(props) => props.theme.colors.ink.light};
       color: ${(props) => props.theme.colors.ink.dark};
-      font-weight: 400;
+      font-weight: ${(props) => props.theme.fontWeights.regular};
       font-size: 1.2rem;
       font-family: inherit;
       border: 2px solid ${(props) => props.theme.colors.secondary.base};
-      border-radius: 10px;
+      border-radius: ${(props) => props.theme.borderRadius.small};
       padding: 0.7rem 1rem;
     }
   }

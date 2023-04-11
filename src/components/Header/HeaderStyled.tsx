@@ -19,7 +19,7 @@ const HeaderStyled = styled.header`
     &__title {
       color: ${(props) => props.theme.colors.primary.base};
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: ${(props) => props.theme.fontWeights.bold};
     }
   }
 

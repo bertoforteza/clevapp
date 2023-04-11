@@ -16,6 +16,7 @@ import {
   showLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
 import postMock from "../../mocks/posts/postMock";
+import updatedPostMock from "../../mocks/posts/updatedPostMock";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 
@@ -136,6 +137,76 @@ describe("Given a useApi custom hook", () => {
         openModalActionCreator({
           isError: true,
           message: "There was a problem loading the post",
+        })
+      );
+    });
+  });
+
+  describe("When it's updatePost function is invoked with a post with title 'lorem ipsum post title'", () => {
+    test("Then it should invoke dispatch with showLoadingActionCreator, hideLoadingActionCreator, loadPostByIdActionCreator with the received post and openModalActionCreator with a success message", async () => {
+      const {
+        result: {
+          current: { updatePost },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const updatedPost = updatedPostMock;
+
+      await updatePost(updatedPost);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        loadPostByIdActionCreator(updatedPost)
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        hideLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        4,
+        openModalActionCreator({
+          isError: false,
+          message: "Post successfully edited",
+        })
+      );
+    });
+  });
+
+  describe("When it's updatePost function is invoked and the request fails", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should invoke dispatch with hideLoadingActionCreator and openModalActionCreator with an error", async () => {
+      const {
+        result: {
+          current: { updatePost },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const updatedPost = updatedPostMock;
+
+      await updatePost(updatedPost);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        hideLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        openModalActionCreator({
+          isError: true,
+          message: "There was a problem updating the post",
         })
       );
     });

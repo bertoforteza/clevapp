@@ -37,6 +37,12 @@ const DetailPostPageStyled = styled.article`
       font-weight: 700;
       color: ${(props) => props.theme.colors.ink.light};
     }
+
+    &__actions {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+    }
   }
 
   .button {
@@ -44,7 +50,7 @@ const DetailPostPageStyled = styled.article`
     color: ${(props) => props.theme.colors.secondary.base};
     text-transform: uppercase;
     font-size: 1.2rem;
-    max-width: 200px;
+    width: 200px;
     margin-top: 2rem;
   }
 `;

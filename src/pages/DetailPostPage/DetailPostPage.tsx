@@ -26,7 +26,10 @@ const DetailPostPage = (): JSX.Element => {
       <span className="detail-page__author">
         This post was created by {userId}
       </span>
-      <Button action={() => navigate("/")} text="home" />
+      <div className="detail-page__actions">
+        <Button action={() => navigate("/")} text="home" />
+        <Button action={() => navigate("/edit")} text="edit" />
+      </div>
     </DetailPostPageStyled>
   );
 };

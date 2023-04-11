@@ -1,9 +1,4 @@
-export interface PostStructure {
-  title: string;
-  userId: number;
-  body: string;
-  id: number;
-}
+import { PostStructure } from "../../../types";
 
 export interface PostsState {
   posts: PostStructure[];

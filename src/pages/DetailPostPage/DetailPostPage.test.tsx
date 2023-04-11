@@ -1,9 +1,9 @@
 import { act, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import postMock from "../../mocks/posts/postMock";
-import { PostStructure } from "../../store/features/posts/types";
 import DetailPostPage from "./DetailPostPage";
 import renderRouterWithProviders from "../../utils/testUtils/renderRouterWithProviders";
-import userEvent from "@testing-library/user-event";
+import { PostStructure } from "../../types";
 
 const mockGetPostById = jest.fn();
 jest.mock("../../hooks/useApi/useApi", () => {

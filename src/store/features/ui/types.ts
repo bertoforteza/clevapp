@@ -9,4 +9,4 @@ export interface UiState {
   modal: ModalStructure;
 }
 
-export type ModalPayload = Pick<ModalStructure, "isError" | "message">;
+export type ModalPayload = Omit<ModalStructure, "isOpen">;

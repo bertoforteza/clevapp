@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { UserCredentials } from "../types";
+import { UserCredentials } from "../../types";
 import useUser from "./useUser";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import { store } from "../../store/store";

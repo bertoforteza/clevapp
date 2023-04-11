@@ -1,8 +1,16 @@
-import { PostStructure } from "../store/features/posts/types";
+import { PostStructure, UserCredentials } from "../types";
 
 export type ApiResponse = PostStructure[];
 
-export interface UserCredentials {
-  username: string;
-  password: string;
+export interface UseApiStructure {
+  getPosts: () => Promise<void>;
+  deletePost: (postId: number) => void;
+  getPostById: (postId: number) => Promise<void>;
+  updatePost: (post: PostStructure) => Promise<void>;
+}
+
+export interface UseUserStructure {
+  loginUser: (loginData: UserCredentials) => void;
+  logoutUser: () => void;
+  getUserToken: () => void;
 }

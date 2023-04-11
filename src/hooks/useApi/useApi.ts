@@ -6,17 +6,17 @@ import {
   loadPostsActionCreator,
   loadPostByIdActionCreator,
 } from "../../store/features/posts/postsSlice";
-import { ApiResponse } from "../types";
+import { ApiResponse, UseApiStructure } from "../types";
 import {
   hideLoadingActionCreator,
   openModalActionCreator,
   showLoadingActionCreator,
 } from "../../store/features/ui/uiSlice";
-import { PostStructure } from "../../store/features/posts/types";
+import { PostStructure } from "../../types";
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 
-const useApi = () => {
+const useApi = (): UseApiStructure => {
   const dispatch = useAppDispatch();
 
   const getPosts = useCallback(async () => {

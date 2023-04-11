@@ -1,10 +1,10 @@
 import useApi from "../../hooks/useApi/useApi";
-import { PostStructure } from "../../store/features/posts/types";
 import { useAppSelector } from "../../store/hooks";
 import { useEffect } from "react";
-import DetailPostPageStyled from "./DetailPostPageStyled";
 import { useNavigate, useParams } from "react-router-dom";
+import DetailPostPageStyled from "./DetailPostPageStyled";
 import Button from "../../components/Button/Button";
+import { PostStructure } from "../../types";
 
 const DetailPostPage = (): JSX.Element => {
   const { posts } = useAppSelector(({ posts }) => posts);

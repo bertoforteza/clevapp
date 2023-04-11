@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PostStructure, PostsState } from "./types";
+import { PostsState } from "./types";
+import { PostStructure } from "../../../types";
 
 export const postsInitialState: PostsState = {
   posts: [],

@@ -23,5 +23,19 @@ declare module "styled-components" {
         error: string;
       };
     };
+
+    borderRadius: {
+      big: string;
+      medium: string;
+      small: string;
+    };
+
+    fontWeights: {
+      light: number;
+      regular: number;
+      medium: number;
+      semiBold: number;
+      bold: number;
+    };
   }
 }

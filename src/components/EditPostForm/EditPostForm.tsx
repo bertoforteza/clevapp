@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useAppSelector } from "../../store/hooks";
-import { PostStructure } from "../../store/features/posts/types";
+import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi/useApi";
 import EditPostFormStyled from "./EditPostFormStyled";
 import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import { PostStructure } from "../../types";
 
 interface PostFormData {
   title: string;

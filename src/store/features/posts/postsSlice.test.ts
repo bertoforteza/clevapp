@@ -1,4 +1,5 @@
 import postListMock from "../../../mocks/posts/postListMock";
+import { PostStructure } from "../../../types";
 import {
   deletePostActionCreator,
   loadPostsActionCreator,
@@ -6,7 +7,7 @@ import {
   postsInitialState,
   postsReducer,
 } from "./postsSlice";
-import { PostStructure, PostsState } from "./types";
+import { PostsState } from "./types";
 
 describe("Given a postReducer", () => {
   describe("When it receives an empty initial state and a loadPosts action with a list with 2 posts as payload", () => {

@@ -1,9 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi/useApi";
-import { PostStructure } from "../../store/features/posts/types";
 import Button from "../Button/Button";
 import PostCardStyled from "./PostCardStyled";
 import { ReactComponent as Delete } from "../../assets/delete-icon.svg";
-import { useNavigate } from "react-router-dom";
+import { PostStructure } from "../../types";
 
 interface PostCardProps {
   post: PostStructure;

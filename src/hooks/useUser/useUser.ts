@@ -5,9 +5,10 @@ import {
   logoutUserActionCreator,
 } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { UserCredentials } from "../types";
+import { UseUserStructure } from "../types";
+import { UserCredentials } from "../../types";
 
-const useUser = () => {
+const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
 
   const loginUser = (loginData: UserCredentials) => {

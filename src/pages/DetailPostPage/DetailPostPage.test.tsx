@@ -51,4 +51,19 @@ describe("Given a DetailPostPage page", () => {
       expect(mockUseNavigate).toHaveBeenCalled();
     });
   });
+
+  describe("Weh its rendered and a user clicks on the 'edit' button", () => {
+    test("Then useNavigate should be invoked", async () => {
+      const post: PostStructure = postMock;
+      renderRouterWithProviders({
+        ui: <DetailPostPage />,
+        preloadedState: { posts: { posts: [post] } },
+      });
+
+      const editButton = screen.getByRole("button", { name: /edit/i });
+      await act(async () => await userEvent.click(editButton));
+
+      expect(mockUseNavigate).toHaveBeenCalled();
+    });
+  });
 });

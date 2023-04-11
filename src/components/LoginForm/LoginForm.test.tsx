@@ -13,11 +13,11 @@ jest.mock("../../hooks/useUser/useUser", () => {
 
 describe("Given a LoginForm component", () => {
   describe("When its rendered", () => {
-    test("Then it should show a form with inputs 'username' and 'password'", () => {
+    test("Then it should show a form with fields 'username' and 'password'", () => {
       renderWithProviders(<LoginForm />);
 
-      const usernameInput = screen.queryByLabelText(/username/i);
-      const passwordInput = screen.queryByLabelText(/password/i);
+      const usernameInput = screen.getByLabelText(/username/i);
+      const passwordInput = screen.getByLabelText(/password/i);
 
       expect(usernameInput).toBeInTheDocument();
       expect(passwordInput).toBeInTheDocument();
@@ -25,14 +25,14 @@ describe("Given a LoginForm component", () => {
   });
 
   describe("when it's filled in and its button 'Login' is clicked", () => {
-    test("Then the form should be submited", async () => {
+    test("Then the form should be submitted", async () => {
       renderWithProviders(<LoginForm />);
 
-      const usernameInput = screen.queryByLabelText(/username/i)!;
-      const passwordInput = screen.queryByLabelText(/password/i)!;
+      const usernameInput = screen.getByLabelText(/username/i)!;
+      const passwordInput = screen.getByLabelText(/password/i)!;
       await act(async () => await userEvent.type(usernameInput, "adnim"));
       await act(async () => await userEvent.type(passwordInput, "adminadmin"));
-      const button = screen.queryByRole("button")!;
+      const button = screen.getByRole("button")!;
       await act(async () => await userEvent.click(button));
 
       expect(mockLoginAction).toHaveBeenCalled();

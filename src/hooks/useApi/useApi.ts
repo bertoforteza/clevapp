@@ -76,7 +76,36 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { getPosts, deletePost, getPostById };
+  const updatePost = async (post: PostStructure) => {
+    const { id } = post;
+
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const response = await axios.patch(`${apiUrl}/${id}`, post);
+      const updatedPost: PostStructure = response.data;
+
+      dispatch(loadPostByIdActionCreator(updatedPost));
+      dispatch(hideLoadingActionCreator());
+      dispatch(
+        openModalActionCreator({
+          isError: false,
+          message: "Post successfully edited",
+        })
+      );
+    } catch {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        openModalActionCreator({
+          isError: true,
+          message: "There was a problem updating the post",
+        })
+      );
+    }
+  };
+
+  return { getPosts, deletePost, getPostById, updatePost };
 };
 
 export default useApi;

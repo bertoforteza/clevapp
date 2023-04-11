@@ -6,7 +6,7 @@ const PostCardStyled = styled.li`
   flex-direction: column;
   justify-content: space-between;
   border: 5px solid ${(props) => props.theme.colors.secondary.base};
-  border-radius: 15px;
+  border-radius: ${(props) => props.theme.borderRadius.medium};
   padding: 1rem;
   position: relative;
   cursor: pointer;
@@ -14,21 +14,21 @@ const PostCardStyled = styled.li`
   .post-card {
     &__title {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: ${(props) => props.theme.fontWeights.bold};
       color: ${(props) => props.theme.colors.primary.base};
       padding-bottom: 1rem;
     }
 
     &__content {
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: ${(props) => props.theme.fontWeights.regular};
       color: ${(props) => props.theme.colors.ink.dark};
       padding-bottom: 1.5rem;
     }
 
     &__author {
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: ${(props) => props.theme.fontWeights.bold};
       color: ${(props) => props.theme.colors.ink.dark};
     }
   }

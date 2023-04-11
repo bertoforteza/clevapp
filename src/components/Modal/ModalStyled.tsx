@@ -16,13 +16,13 @@ const ModalStyled = styled.div`
   text-align: center;
   transform: translate(-50%, -50%);
   padding: 0.5rem 1.5rem;
-  border-radius: 15px;
+  border-radius: ${(props) => props.theme.borderRadius.medium};
   border: 3px solid ${(props) => props.theme.colors.secondary.base};
 
   .modal-text {
     color: ${(props) => props.theme.colors.secondary.base};
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: ${(props) => props.theme.fontWeights.bold};
   }
 
   &.modal-error {
